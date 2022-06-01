@@ -12,9 +12,9 @@ def index():
     return render_template('index.html')
 
 
-@app.route('/predict')
+@app.route('/predict', methods=['GET', 'POST'])
 def predict():
-    smi = request.args.get('smi', '')
+    smi = request.json.get('smi', '')
     return smi_pred(smi)
 
 #searchword = request.args.get('key', '')
