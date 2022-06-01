@@ -2,6 +2,7 @@ from flask import Flask, render_template
 from markupsafe import escape
 from flask import url_for
 from flask import request
+from ml.smi_pred import smi_pred
 
 app = Flask(__name__)
 
@@ -13,10 +14,8 @@ def index():
 
 @app.route('/predict')
 def predict():
-    #long_prb, middle_prob
-    # pred_res=ml_pred(smi)
     smi = request.args.get('smi', '')
-    return {'req': smi}
+    return smi_pred(smi)
 
 #searchword = request.args.get('key', '')
 
